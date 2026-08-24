@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Galerie — Pauline Zoe Tillmann</title>
+<meta name="description" content="Werke von Pauline Zoe Tillmann — Kunst und Filmproduktion, chronologisch." />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="nav-name"><span class="first">Pauline Zoe</span> <span class="last">Tillmann</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot-art">●</span> Freie Arbeit &nbsp; <span class="dot-film">●</span> Auftragsarbeit — chronologisch</p>
+    <h1 class="page-title">Galerie</h1>
+    <p class="page-lead">Zehn Arbeiten aus freier künstlerischer Praxis — inklusive eigener Kunstfilme — und Auftragsproduktionen in der Filmproduktion, in der Reihenfolge ihrer Entstehung.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:56px;">
+  <div class="wrap">
+    <div class="gallery-controls">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">Alle</button>
+        <button class="filter-btn" data-filter="art">Freie Arbeit</button>
+        <button class="filter-btn" data-filter="film">Auftragsarbeit</button>
+      </div>
+      <span class="sort-note">Sortiert nach Jahr, 2019 – 2024</span>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 Pauline Zoe Tillmann</span>
+    <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+
+<!-- Work detail modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" aria-label="Schließen">✕</button>
+    <div class="modal-image"><img src="" alt="" /></div>
+    <div class="modal-body">
+      <p class="modal-eyebrow"></p>
+      <h3 class="modal-title"></h3>
+      <p class="eyebrow modal-medium" style="margin-bottom:18px;"></p>
+      <p class="modal-desc"></p>
+      <div class="modal-footer-nav">
+        <button class="modal-nav-btn modal-prev">← Vorherige</button>
+        <button class="modal-nav-btn modal-next">Nächste →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
