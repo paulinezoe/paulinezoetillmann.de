@@ -199,30 +199,69 @@ h1, h2, h3 {
 .btn:hover .arrow { transform: translateX(3px); }
 
 /* ============================================
+   No-scroll page shell (landing/gallery only)
+   Locks the whole page to exactly one screen —
+   header + stage + footer always fit, no scrolling.
+   ============================================ */
+html:has(body.no-scroll) {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.no-scroll {
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body.no-scroll .topbar {
+  flex: 0 0 auto;
+  padding: 16px var(--gutter);
+}
+
+body.no-scroll .stage {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+body.no-scroll .site-footer {
+  flex: 0 0 auto;
+  padding: 10px var(--gutter) 14px;
+}
+
+/* ============================================
    STAGE — landing page that becomes the gallery
    ============================================ */
 .stage {
   position: relative;
-  min-height: calc(100svh - 73px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px var(--gutter) 30px;
+  padding: 24px var(--gutter);
+  min-height: 0;
 }
 
 .stage-frame {
   position: relative;
   width: 100%;
   max-width: 1040px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vh, 22px);
+  min-height: 0;
 }
 
 .stage-image-wrap {
   position: relative;
-  width: 100%;
-  max-width: 720px;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
   aspect-ratio: 4 / 5;
   background: var(--paper-2);
   overflow: hidden;
@@ -554,4 +593,23 @@ h1, h2, h3 {
   height: 8px;
   border-radius: 50%;
   background: var(--ink);
+}
+
+/* ============================================
+   Compact adjustments for short viewports
+   (keeps the no-scroll landing fitting on any screen)
+   ============================================ */
+@media (max-height: 700px) {
+  body.no-scroll .topbar { padding: 10px var(--gutter); }
+  body.no-scroll .site-footer { padding: 6px var(--gutter) 10px; }
+  .stage { padding: 12px var(--gutter); }
+  .stage-controls { margin-top: 14px; }
+  .landing-hint { display: none; }
+  .stage-caption { margin-top: 14px; }
+}
+
+@media (max-height: 560px) {
+  .wordmark { font-size: clamp(1.1rem, 4.5vw, 1.8rem); }
+  .stage-title { font-size: 1.1rem; }
+  .stage-arrow { width: 38px; height: 38px; }
 }
