@@ -1,140 +1,115 @@
 /* ============================================
    Pauline Zoe Tillmann — Portfolio
-   Shared data + behaviour
+   Work data + behaviour
    ============================================ */
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* cat: "art" = freie künstlerische Arbeit (inkl. eigener Kunstfilme)
-        "film" = Auftragsarbeit in der Filmproduktion */
+        "film" = Auftragsarbeit in der Filmproduktion
+   images: Liste der Fotos zu diesem Werk (erstes Bild = Titelbild) */
 const WORKS = [
   { id: 1, title: "Kleines Rauschen", year: 2019, cat: "art",
-    medium: "Öl auf Leinwand, 60 × 80 cm", img: "images/_DSC1659.jpg",
-    desc: "Eine frühe Arbeit über das Rauschen zwischen Formen — entstanden aus Skizzen, die über mehrere Wochen im Atelierfenster liegen blieben, bevor die eigentliche Leinwand begann. [Platzhaltertext]" }, },
+    medium: "Öl auf Leinwand, 60 × 80 cm",
+    images: ["images/_DSC1659.jpg"],
+    desc: "Eine frühe Arbeit über das Rauschen zwischen Formen — entstanden aus Skizzen, die über mehrere Wochen im Atelierfenster liegen blieben, bevor die eigentliche Leinwand begann. [Platzhaltertext]" },
   { id: 2, title: "Nachtfahrt", year: 2020, cat: "art",
-    medium: "Kunstfilm · Regie · 14 Min.", img: "images/work-2.svg",
+    medium: "Kunstfilm · Regie · 14 Min.",
+    images: ["images/work-2.svg"],
     desc: "Ein nächtlicher Kunstfilm über zwei Fremde in einem Nachtbus. Eigenständig entwickelt, Regie und Montage in eigener Hand. [Platzhaltertext]" },
   { id: 3, title: "Fragmente I–IV", year: 2020, cat: "art",
-    medium: "Tuschezeichnung, Serie aus 4 Blättern", img: "images/work-3.svg",
+    medium: "Tuschezeichnung, Serie aus 4 Blättern",
+    images: ["images/work-3.svg"],
     desc: "Eine vierteilige Serie, die sich mit Unvollständigkeit als Formprinzip beschäftigt. [Platzhaltertext]" },
   { id: 4, title: "Lichtspiel", year: 2021, cat: "film",
-    medium: "Musikvideo · Produktionsleitung", img: "images/work-4.svg",
+    medium: "Musikvideo · Produktionsleitung",
+    images: ["images/work-4.svg"],
     desc: "Produktionsleitung für ein Musikvideo mit aufwendiger Lichtchoreografie im Kundenauftrag. [Platzhaltertext]" },
   { id: 5, title: "Stillleben No. 7", year: 2021, cat: "art",
-    medium: "Öl auf Leinwand, 50 × 50 cm", img: "images/work-5.svg",
+    medium: "Öl auf Leinwand, 50 × 50 cm",
+    images: ["images/work-5.svg"],
     desc: "Teil einer fortlaufenden Stillleben-Reihe, die Alltagsobjekte in ungewohnte Kompositionen setzt. [Platzhaltertext]" },
   { id: 6, title: "Wurzelwerk", year: 2022, cat: "film",
-    medium: "Dokumentarfilm · Produktionsleitung · 42 Min.", img: "images/work-6.svg",
+    medium: "Dokumentarfilm · Produktionsleitung · 42 Min.",
+    images: ["images/work-6.svg"],
     desc: "Ein dokumentarisches Langformat über drei Generationen einer Gärtnerfamilie, realisiert im Auftrag einer Produktionsfirma. [Platzhaltertext]" },
   { id: 7, title: "Übergänge", year: 2022, cat: "art",
-    medium: "Mixed Media auf Holz, 90 × 120 cm", img: "images/work-7.svg",
+    medium: "Mixed Media auf Holz, 90 × 120 cm",
+    images: ["images/work-7.svg"],
     desc: "Eine großformatige Arbeit, die Malerei mit gefundenem Material kombiniert. [Platzhaltertext]" },
   { id: 8, title: "Schattenriss", year: 2023, cat: "art",
-    medium: "Kunstfilm · Kamera · 9 Min.", img: "images/work-8.svg",
+    medium: "Kunstfilm · Kamera · 9 Min.",
+    images: ["images/work-8.svg"],
     desc: "Kameraarbeit für einen eigenen, experimentellen Kunstfilm, gedreht mit natürlichem Licht. [Platzhaltertext]" },
   { id: 9, title: "Innenräume", year: 2023, cat: "art",
-    medium: "Öl auf Leinwand, 70 × 100 cm", img: "images/work-9.svg",
+    medium: "Öl auf Leinwand, 70 × 100 cm",
+    images: ["images/work-9.svg"],
     desc: "Eine Untersuchung von Innenräumen als emotionale Landschaften. [Platzhaltertext]" },
   { id: 10, title: "Zwischenzeit", year: 2024, cat: "art",
-    medium: "Experimentalfilm · Regie & Schnitt · 21 Min.", img: "images/work-10.svg",
+    medium: "Experimentalfilm · Regie & Schnitt · 21 Min.",
+    images: ["images/work-10.svg"],
     desc: "Die bisher persönlichste Arbeit: ein essayistischer Kunstfilm über Zeit und Erinnerung. [Platzhaltertext]" }
 ];
 
-/* ---------- Nav active state ---------- */
-(function markActiveNav() {
-  const path = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".topbar-nav a").forEach(a => {
-    const href = a.getAttribute("href");
-    if (href === path) a.classList.add("active");
-  });
-})();
+const sortedWorks = [...WORKS].sort((a, b) => a.year - b.year);
 
-/* ---------- Stage: landing photo that becomes the gallery ---------- */
+function catLabel(cat) {
+  return cat === "art" ? "Freie Arbeit" : "Auftragsarbeit";
+}
+
+/* ---------- Landing page / photo stage ---------- */
 (function stage() {
-  const wrap = document.getElementById("stageImageWrap");
-  if (!wrap) return;
+  const photoWrap = document.getElementById("stagePhotoWrap");
+  if (!photoWrap) return;
 
   const photo = document.getElementById("stagePhoto");
-  const landingMark = document.getElementById("landingMark");
-  const caption = document.getElementById("stageCaption");
-  const indexEl = document.getElementById("stageIndex");
-  const titleEl = document.getElementById("stageTitle");
-  const metaEl = document.getElementById("stageMeta");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const filterBtns = document.querySelectorAll(".stage-filter");
-  const prevZone = wrap.querySelector(".stage-click-prev");
-  const nextZone = wrap.querySelector(".stage-click-next");
+  const landingName = document.getElementById("landingName");
+  const prevArrow = document.getElementById("prevArrow");
+  const nextArrow = document.getElementById("nextArrow");
 
-  const sorted = [...WORKS].sort((a, b) => a.year - b.year);
-  let activeFilter = "all";
   let current = 0;
-  let hasStartedBrowsing = false;
+  let hasNavigated = false;
 
-  function currentSet() {
-    return activeFilter === "all" ? sorted : sorted.filter(w => w.cat === activeFilter);
-  }
-
-  function catLabel(cat) {
-    return cat === "art" ? "Freie Arbeit" : "Auftragsarbeit";
-  }
-
-  function renderWork() {
-    const set = currentSet();
-    const work = set[current];
-    if (!work) return;
-    photo.src = work.img;
-    photo.alt = `${work.title}, ${work.medium}`;
-    indexEl.textContent = `${String(current + 1).padStart(2, "0")} / ${String(set.length).padStart(2, "0")}`;
-    titleEl.textContent = work.title;
-    metaEl.textContent = `${work.year} · ${work.medium} · ${catLabel(work.cat)}`;
-  }
-
-  function enterGalleryMode() {
-    if (hasStartedBrowsing) return;
-    hasStartedBrowsing = true;
-    landingMark.classList.add("is-hidden");
-    caption.hidden = false;
+  function render() {
+    const work = sortedWorks[current];
+    photo.src = work.images[0];
+    photo.alt = work.title;
   }
 
   function goTo(newIndex) {
-    const set = currentSet();
-    current = ((newIndex % set.length) + set.length) % set.length;
+    current = ((newIndex % sortedWorks.length) + sortedWorks.length) % sortedWorks.length;
     photo.classList.add("is-fading");
     window.setTimeout(() => {
-      renderWork();
+      render();
       photo.classList.remove("is-fading");
-    }, prefersReducedMotion ? 0 : 160);
+    }, prefersReducedMotion ? 0 : 150);
   }
 
-  function next() { enterGalleryMode(); goTo(current + 1); }
-  function prev() { enterGalleryMode(); goTo(current - 1); }
+  function hideLandingName() {
+    if (hasNavigated) return;
+    hasNavigated = true;
+    landingName.classList.add("is-hidden");
+  }
 
-  // initial photo = first work chronologically, shown under the landing name
-  renderWork();
+  function next() { hideLandingName(); goTo(current + 1); }
+  function prev() { hideLandingName(); goTo(current - 1); }
 
-  nextZone.addEventListener("click", next);
-  prevZone.addEventListener("click", prev);
-  nextBtn.addEventListener("click", next);
-  prevBtn.addEventListener("click", prev);
+  render();
+
+  nextArrow.addEventListener("click", (e) => { e.stopPropagation(); next(); });
+  prevArrow.addEventListener("click", (e) => { e.stopPropagation(); prev(); });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") next();
     if (e.key === "ArrowLeft") prev();
   });
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeFilter = btn.dataset.filter;
-      current = 0;
-      enterGalleryMode();
-      renderWork();
-    });
+  photoWrap.addEventListener("click", () => {
+    const work = sortedWorks[current];
+    window.location.href = `werk.html?id=${work.id}`;
   });
 
-  /* ---------- Wave distortion on hover (SVG filter) ---------- */
+  /* Wave distortion on hover (SVG filter) */
   const waveDisplace = document.getElementById("waveDisplace");
   const waveTurb = document.getElementById("waveTurb");
 
@@ -159,7 +134,25 @@ const WORKS = [
     }
     function kick() { if (!raf) raf = requestAnimationFrame(tick); }
 
-    wrap.addEventListener("pointerenter", () => { targetScale = 14; kick(); });
-    wrap.addEventListener("pointerleave", () => { targetScale = 0; kick(); });
+    photoWrap.addEventListener("pointerenter", () => { targetScale = 14; kick(); });
+    photoWrap.addEventListener("pointerleave", () => { targetScale = 0; kick(); });
   }
+})();
+
+/* ---------- Work detail page ---------- */
+(function workDetail() {
+  const galleryEl = document.getElementById("workGallery");
+  if (!galleryEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get("id"));
+  const work = WORKS.find(w => w.id === id) || sortedWorks[0];
+
+  document.title = `${work.title} — Pauline Zoe Tillmann`;
+  galleryEl.innerHTML = work.images
+    .map(src => `<img src="${src}" alt="${work.title}" />`)
+    .join("");
+  document.getElementById("workTitle").textContent = work.title;
+  document.getElementById("workMeta").textContent = `${work.year} · ${work.medium} · ${catLabel(work.cat)}`;
+  document.getElementById("workDesc").textContent = work.desc;
 })();

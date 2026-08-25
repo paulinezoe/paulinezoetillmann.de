@@ -3,55 +3,41 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pauline Zoe Tillmann — Portfolio</title>
-<meta name="description" content="Portfolio von Pauline Zoe Tillmann — freie künstlerische Arbeit und Auftragsarbeit in der Filmproduktion." />
+<title>Pauline Zoe Tillmann</title>
+<meta name="description" content="Portfolio von Pauline Zoe Tillmann." />
 <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="no-scroll">
+<body class="landing-view">
 
-<a href="#main" class="skip-link">Zum Inhalt springen</a>
-
-<header class="topbar">
-  <a href="index.html" class="topbar-name">Pauline Zoe Tillmann</a>
-  <nav class="topbar-nav">
-    <a href="kontakt.html">Kontakt</a>
-    <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram ↗</a>
-    <a href="ueber-mich.html">Über mich</a>
-  </nav>
+<header class="site-chrome chrome-overlay">
+  <a href="index.html" class="site-name">Pauline Zoe Tillmann</a>
+  <div class="site-chrome-right">
+    <a href="https://instagram.com/" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-width="1.6">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4.2" />
+        <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    </a>
+    <a href="kontakt.html" class="btn-chrome">Kontakt</a>
+    <a href="ueber-mich.html" class="btn-chrome">Über mich</a>
+  </div>
 </header>
 
-<main class="stage" id="main">
-  <div class="stage-frame">
-    <div class="stage-image-wrap" id="stageImageWrap">
-      <img id="stagePhoto" src="" alt="" class="stage-photo" />
-      <div class="stage-click-zone stage-click-prev" aria-hidden="true"></div>
-      <div class="stage-click-zone stage-click-next" aria-hidden="true"></div>
-
-      <div class="stage-landing-mark" id="landingMark">
-        <h1 class="wordmark">Pauline Zoe Tillmann</h1>
-        <p class="landing-hint">Auf das Foto tippen, um durch die Werke zu blättern</p>
-      </div>
-    </div>
-
-    <div class="stage-caption" id="stageCaption" hidden>
-      <p class="stage-index" id="stageIndex"></p>
-      <h2 class="stage-title" id="stageTitle"></h2>
-      <p class="stage-meta" id="stageMeta"></p>
-    </div>
-
-    <div class="stage-controls">
-      <button class="stage-arrow" id="prevBtn" aria-label="Vorheriges Werk">←</button>
-      <div class="stage-filters" id="stageFilters">
-        <button class="stage-filter active" data-filter="all">Alle</button>
-        <button class="stage-filter" data-filter="art">Freie Arbeit</button>
-        <button class="stage-filter" data-filter="film">Auftragsarbeit</button>
-      </div>
-      <button class="stage-arrow" id="nextBtn" aria-label="Nächstes Werk">→</button>
-    </div>
+<main class="stage-full">
+  <div class="stage-photo-wrap" id="stagePhotoWrap">
+    <img id="stagePhoto" src="" alt="" class="stage-photo-full" />
   </div>
+
+  <div class="landing-name" id="landingName">
+    <h1>Pauline Zoe Tillmann</h1>
+  </div>
+
+  <button class="edge-arrow edge-arrow-left" id="prevArrow" aria-label="Vorheriges Bild">←</button>
+  <button class="edge-arrow edge-arrow-right" id="nextArrow" aria-label="Nächstes Bild">→</button>
 </main>
 
-<!-- SVG filter used for the wave-distortion hover effect on the stage photo -->
+<!-- SVG filter for the wave-distortion hover effect -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <filter id="wave-distort" x="-20%" y="-20%" width="140%" height="140%">
@@ -60,13 +46,6 @@
     </filter>
   </defs>
 </svg>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <span>© 2026 Pauline Zoe Tillmann</span>
-    <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram ↗</a>
-  </div>
-</footer>
 
 <script src="js/script.js"></script>
 </body>
