@@ -9,17 +9,17 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
         "film" = Auftragsarbeit in der Filmproduktion
    images: Liste der Fotos zu diesem Werk (erstes Bild = Titelbild) */
 const WORKS = [
-  { id: 1, title: "Kleines Rauschen", year: 2019, cat: "art",
-    medium: "Öl auf Leinwand, 60 × 80 cm",
-    images: ["images/_DSC1639.jpg"],
+  { id: 1, title: "kopfraum", year: 20123 cat: "art",
+    medium: "Fotografie",
+    images: ["images/DSC1639.jpg"],
     desc: "Eine frühe Arbeit über das Rauschen zwischen Formen — entstanden aus Skizzen, die über mehrere Wochen im Atelierfenster liegen blieben, bevor die eigentliche Leinwand begann. [Platzhaltertext]" },
   { id: 2, title: "Nachtfahrt", year: 2020, cat: "art",
     medium: "Kunstfilm · Regie · 14 Min.",
-    images: ["images/work-2.svg"],
+    images: ["images/P1067474.jpg"],
     desc: "Ein nächtlicher Kunstfilm über zwei Fremde in einem Nachtbus. Eigenständig entwickelt, Regie und Montage in eigener Hand. [Platzhaltertext]" },
   { id: 3, title: "Fragmente I–IV", year: 2020, cat: "art",
     medium: "Tuschezeichnung, Serie aus 4 Blättern",
-    images: ["images/work-3.svg"],
+    images: ["images/Fluidity_01.jpg"],
     desc: "Eine vierteilige Serie, die sich mit Unvollständigkeit als Formprinzip beschäftigt. [Platzhaltertext]" },
   { id: 4, title: "Lichtspiel", year: 2021, cat: "film",
     medium: "Musikvideo · Produktionsleitung",
