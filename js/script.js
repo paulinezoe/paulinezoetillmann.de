@@ -11,7 +11,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const WORKS = [
   { id: 1, title: "Kleines Rauschen", year: 2019, cat: "art",
     medium: "Öl auf Leinwand, 60 × 80 cm",
-    images: ["images/_DSC1659.jpg"],
+    images: ["images/_DSC1639.jpg"],
     desc: "Eine frühe Arbeit über das Rauschen zwischen Formen — entstanden aus Skizzen, die über mehrere Wochen im Atelierfenster liegen blieben, bevor die eigentliche Leinwand begann. [Platzhaltertext]" },
   { id: 2, title: "Nachtfahrt", year: 2020, cat: "art",
     medium: "Kunstfilm · Regie · 14 Min.",
