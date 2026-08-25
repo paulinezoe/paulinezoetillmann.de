@@ -9,7 +9,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
         "film" = Auftragsarbeit in der Filmproduktion
    images: Liste der Fotos zu diesem Werk (erstes Bild = Titelbild) */
 const WORKS = [
-  { id: 1, title: "kopfraum", year: 20123 cat: "art",
+  { id: 1, title: "kopfraum", year: 2023 cat: "art",
     medium: "Fotografie",
     images: ["images/DSC1639.jpg"],
     desc: "Eine frühe Arbeit über das Rauschen zwischen Formen — entstanden aus Skizzen, die über mehrere Wochen im Atelierfenster liegen blieben, bevor die eigentliche Leinwand begann. [Platzhaltertext]" },
