@@ -8,9 +8,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 /* cat: "art" = freie künstlerische Arbeit (inkl. eigener Kunstfilme)
         "film" = Auftragsarbeit in der Filmproduktion */
 const WORKS = [
-  { id: 1, title: "Kleines Rauschen", year: 2019, cat: "art",
-    medium: "Öl auf Leinwand, 60 × 80 cm", img: "images/_DSC1659.jpg",
-    desc: "Eine frühe Arbeit über das Rauschen zwischen Formen — entstanden aus Skizzen, die über mehrere Wochen im Atelierfenster liegen blieben, bevor die eigentliche Leinwand begann. [Platzhaltertext]" },
+  { id: 1, img: "images/_DSC1659.jpg" },
   { id: 2, title: "Nachtfahrt", year: 2020, cat: "art",
     medium: "Kunstfilm · Regie · 14 Min.", img: "images/work-2.svg",
     desc: "Ein nächtlicher Kunstfilm über zwei Fremde in einem Nachtbus. Eigenständig entwickelt, Regie und Montage in eigener Hand. [Platzhaltertext]" },
